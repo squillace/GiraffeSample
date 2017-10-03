@@ -1,0 +1,10 @@
+/Users/ralphsquillace/work/nogo/fsharp/GiraffeSample/obj/Debug/netcoreapp2.0/GiraffeSample.fsproj.CoreCompileInputs.cache
+/Users/ralphsquillace/work/nogo/fsharp/GiraffeSample/bin/Debug/netcoreapp2.0/Sample.db
+/Users/ralphsquillace/work/nogo/fsharp/GiraffeSample/bin/Debug/netcoreapp2.0/Views/Index.cshtml
+/Users/ralphsquillace/work/nogo/fsharp/GiraffeSample/bin/Debug/netcoreapp2.0/GiraffeSample.deps.json
+/Users/ralphsquillace/work/nogo/fsharp/GiraffeSample/bin/Debug/netcoreapp2.0/GiraffeSample.runtimeconfig.json
+/Users/ralphsquillace/work/nogo/fsharp/GiraffeSample/bin/Debug/netcoreapp2.0/GiraffeSample.runtimeconfig.dev.json
+/Users/ralphsquillace/work/nogo/fsharp/GiraffeSample/bin/Debug/netcoreapp2.0/GiraffeSample.dll
+/Users/ralphsquillace/work/nogo/fsharp/GiraffeSample/bin/Debug/netcoreapp2.0/GiraffeSample.pdb
+/Users/ralphsquillace/work/nogo/fsharp/GiraffeSample/obj/Debug/netcoreapp2.0/GiraffeSample.dll
+/Users/ralphsquillace/work/nogo/fsharp/GiraffeSample/obj/Debug/netcoreapp2.0/GiraffeSample.pdb
