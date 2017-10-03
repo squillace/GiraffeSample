@@ -2,3 +2,6 @@
 *.tmp
 *.temp
 .git*
+bin/
+ojb/
+app/
