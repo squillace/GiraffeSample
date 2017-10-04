@@ -3,5 +3,5 @@
 *.temp
 .git*
 bin/
-ojb/
+obj/
 app/
