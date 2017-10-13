@@ -21,11 +21,11 @@ spec:
         - containerPort: {{ .Values.service.internalPort }}
         livenessProbe:
           httpGet:
-            path: /
+            path: /lunch
             port: {{ .Values.service.internalPort }}
         readinessProbe:
           httpGet:
-            path: /
+            path: /lunch
             port: {{ .Values.service.internalPort }}
         resources:
 {{ toYaml .Values.resources | indent 12 }}
