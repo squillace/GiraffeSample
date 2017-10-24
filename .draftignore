@@ -1,7 +1,0 @@
-*.swp
-*.tmp
-*.temp
-.git*
-bin/
-obj/
-app/
