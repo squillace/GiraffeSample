@@ -36,7 +36,7 @@ let handleAddLunch (next: HttpFunc) (ctx: HttpContext) =
 
 let webApp =
     choose [
-        route "/" >=> razorHtmlView "Index" { Text = "Hello world, from F#, dotnetcore2, and Giraffe!" }
+        route "/" >=> razorHtmlView "Index" { Text = "Hello world, from F#, dotnetcore2, and... Giraffe!" }
         GET >=> route "/lunch" >=> handleLunchFilter
         POST >=> route "/lunch/add" >=> handleAddLunch
         setStatusCode 404 >=> text "Not Found" ]
