@@ -1,7 +1,7 @@
 const { events, Job } = require("brigadier")
 
 events.on("push", (brigadeEvent, project) => {
-  console.log("==> handling an 'exec' event")
+  console.log("==> handling a 'push' event from github")
 
   var m = `github: Hook ${brigadeEvent.type} called for build on ${brigadeEvent.commit} of https://github.com/${project.repo.name}`
 
@@ -13,7 +13,7 @@ events.on("push", (brigadeEvent, project) => {
       SLACK_WEBHOOK: project.secrets.SLACK_WEBHOOK,
       SLACK_USERNAME: "Brigade",
       SLACK_TITLE: `Build ${brigadeEvent.type}`,
-      SLACK_MESSAGE: `${m} <https://github.com/${project.repo.name}>`,
+      SLACK_MESSAGE: `${m}`,
       SLACK_COLOR: "#00ff00"
     }
 
@@ -23,4 +23,5 @@ events.on("push", (brigadeEvent, project) => {
   } else {
     console.log(m)
   }
+
 })
