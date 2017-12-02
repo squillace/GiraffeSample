@@ -18,7 +18,7 @@ events.on("push", (brigadeEvent, project) => {
 
 
 
-  var m = `Github ${brigadeEvent.type} event on the \"${brigConfig.get("branch")}\" branch.\nCommit link: ${gitPayload.head_commit.url}.\nCommitted by ${gitPayload.head_commit.author.username}.`
+  var m = `Github ${brigadeEvent.type} event on the \"${brigConfig.get("branch")}\" branch.\nCommit link: ${gitPayload.head_commit.url}.\nCommitted by ${gitPayload.head_commit.author.username} (${gitPayload.head_commit.author.email}).`
 
   if (project.secrets.SLACK_WEBHOOK) {
     var container = new Job("slack-notify")
