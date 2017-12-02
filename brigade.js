@@ -3,6 +3,20 @@ const { events, Job } = require("brigadier")
 events.on("push", (brigadeEvent, project) => {
   console.log("==> handling a 'push' event from github. Reaching out to slack to notify the proper authorities.")
 
+  // setup variables
+  var gitPayload = JSON.parse(brigadeEvent.payload)
+  var brigConfig = new Map()
+  brigConfig.set("acrServer", project.secrets.acrServer)
+  brigConfig.set("acrUsername", project.secrets.acrUsername)
+  brigConfig.set("acrPassword", project.secrets.acrPassword)
+  brigConfig.set("apiImage", "chzbrgr71/smackapi")
+  brigConfig.set("gitSHA", brigadeEvent.commit.substr(0,7))
+  brigConfig.set("eventType", brigadeEvent.type)
+  brigConfig.set("branch", getBranch(gitPayload))
+  brigConfig.set("imageTag", `${brigConfig.get("branch")}-${brigConfig.get("gitSHA")}`)
+  brigConfig.set("apiACRImage", `${brigConfig.get("acrServer")}/${brigConfig.get("apiImage")}`)
+
+
   var m = `Github ${brigadeEvent.type} event for https://github.com/${project.repo.name}/commit/${brigadeEvent.commit}`
 
   if (project.secrets.SLACK_WEBHOOK) {
@@ -40,3 +54,11 @@ events.on("after", (event, proj) => {
 slack.run()
   
 })
+
+function getBranch (p) {
+  if (p.ref) {
+      return p.ref.substring(11)
+  } else {
+      return "PR"
+  }
+}
