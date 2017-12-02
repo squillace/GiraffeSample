@@ -35,7 +35,7 @@ events.on("after", (event, proj) => {
     SLACK_WEBHOOK: proj.secrets.SLACK_WEBHOOK,
     SLACK_USERNAME: "BrigadeBot",
     SLACK_MESSAGE: "brigade pipeline finished successfully",
-    SLACK_COLOR: "#ff0000"
+    SLACK_COLOR: "#00ff00"
   }
 slack.run()
   
