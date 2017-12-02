@@ -1,7 +1,7 @@
 const { events, Job } = require("brigadier")
 
 events.on("push", (brigadeEvent, project) => {
-  console.log("==> handling a 'push' event from github")
+  console.log("==> handling a 'push' event from github. Reaching out to slack to notify the proper authorities.")
 
   var m = `Github ${brigadeEvent.type} event for https://github.com/${project.repo.name}/commit/${brigadeEvent.commit}`
 
