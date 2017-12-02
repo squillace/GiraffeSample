@@ -6,18 +6,19 @@ events.on("push", (brigadeEvent, project) => {
   // setup variables
   var gitPayload = JSON.parse(brigadeEvent.payload)
   var brigConfig = new Map()
-  brigConfig.set("acrServer", project.secrets.acrServer)
-  brigConfig.set("acrUsername", project.secrets.acrUsername)
-  brigConfig.set("acrPassword", project.secrets.acrPassword)
+  //brigConfig.set("acrServer", project.secrets.acrServer)
+  //brigConfig.set("acrUsername", project.secrets.acrUsername)
+  //brigConfig.set("acrPassword", project.secrets.acrPassword)
   brigConfig.set("apiImage", "chzbrgr71/smackapi")
   brigConfig.set("gitSHA", brigadeEvent.commit.substr(0,7))
   brigConfig.set("eventType", brigadeEvent.type)
   brigConfig.set("branch", getBranch(gitPayload))
   brigConfig.set("imageTag", `${brigConfig.get("branch")}-${brigConfig.get("gitSHA")}`)
-  brigConfig.set("apiACRImage", `${brigConfig.get("acrServer")}/${brigConfig.get("apiImage")}`)
+  //brigConfig.set("apiACRImage", `${brigConfig.get("acrServer")}/${brigConfig.get("apiImage")}`)
 
 
-  var m = `Github ${brigadeEvent.type} event for https://github.com/${project.repo.name}/commit/${brigadeEvent.commit}`
+
+  var m = `Github ${brigadeEvent.type} event for https://github.com/${project.repo.name}/commit/${brigadeEvent.commit} \non the brigade pipeline starting for ${brigConfig.get("branch")} with commit ID ${brigConfig.get("gitSHA")}\n`
 
   if (project.secrets.SLACK_WEBHOOK) {
     var container = new Job("slack-notify")
