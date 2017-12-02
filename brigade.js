@@ -11,7 +11,7 @@ events.on("push", (brigadeEvent, project) => {
     container.image = "technosophos/slack-notify:latest"
     container.env = {
       SLACK_WEBHOOK: project.secrets.SLACK_WEBHOOK,
-      SLACK_USERNAME: "Brigade",
+      SLACK_USERNAME: "BrigadeBot",
       SLACK_TITLE: `Build ${brigadeEvent.type}`,
       SLACK_MESSAGE: `${m}`,
       SLACK_COLOR: "#00ff00"
@@ -32,7 +32,7 @@ events.on("after", (event, proj) => {
   var slack = new Job("slack-notify", "technosophos/slack-notify:latest", ["/slack-notify"])
   slack.storage.enabled = false
   slack.env = {
-    SLACK_WEBHOOK: proj.secrets.slackWebhook,
+    SLACK_WEBHOOK: proj.secrets.SLACK_WEBHOOK,
     SLACK_USERNAME: "BrigadeBot",
     SLACK_MESSAGE: "brigade pipeline finished successfully",
     SLACK_COLOR: "#ff0000"
