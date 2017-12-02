@@ -25,3 +25,18 @@ events.on("push", (brigadeEvent, project) => {
   }
 
 })
+
+events.on("after", (event, proj) => {
+  console.log("Brigade pipeline finished successfully")
+
+  var slack = new Job("slack-notify", "technosophos/slack-notify:latest", ["/slack-notify"])
+  slack.storage.enabled = false
+  slack.env = {
+    SLACK_WEBHOOK: proj.secrets.slackWebhook,
+    SLACK_USERNAME: "BrigadeBot",
+    SLACK_MESSAGE: "brigade pipeline finished successfully",
+    SLACK_COLOR: "#ff0000"
+  }
+slack.run()
+  
+})
