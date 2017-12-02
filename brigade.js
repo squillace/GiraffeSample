@@ -3,7 +3,7 @@ const { events, Job } = require("brigadier")
 events.on("push", (brigadeEvent, project) => {
   console.log("==> handling a 'push' event from github")
 
-  var m = `github: Hook ${brigadeEvent.type} called for build on ${brigadeEvent.commit} of https://github.com/${project.repo.name}`
+  var m = `Github ${brigadeEvent.type} event for https://github.com/${project.repo.name}/commit/${brigadeEvent.commit}`
 
   if (project.secrets.SLACK_WEBHOOK) {
     var container = new Job("slack-notify")
