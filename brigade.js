@@ -6,17 +6,13 @@ events.on("push", (brigadeEvent, project) => {
   // setup variables
   var gitPayload = JSON.parse(brigadeEvent.payload)
   var brigConfig = new Map()
-  //brigConfig.set("acrServer", project.secrets.acrServer)
-  //brigConfig.set("acrUsername", project.secrets.acrUsername)
-  //brigConfig.set("acrPassword", project.secrets.acrPassword)
-  brigConfig.set("apiImage", "chzbrgr71/smackapi")
+  
   brigConfig.set("gitSHA", brigadeEvent.commit.substr(0,7))
   brigConfig.set("eventType", brigadeEvent.type)
   brigConfig.set("branch", getBranch(gitPayload))
   brigConfig.set("imageTag", `${brigConfig.get("branch")}-${brigConfig.get("gitSHA")}`)
+  
   //brigConfig.set("apiACRImage", `${brigConfig.get("acrServer")}/${brigConfig.get("apiImage")}`)
-
-
 
   var m = `Github ${brigadeEvent.type} event on the \"${brigConfig.get("branch")}\" branch.\nCommit link: ${gitPayload.head_commit.url}.\nCommitted by ${gitPayload.head_commit.author.username} (${gitPayload.head_commit.author.email}).`
   console.log(m)
