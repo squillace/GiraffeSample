@@ -31,7 +31,7 @@ let handleAddLunch (next: HttpFunc) (ctx: HttpContext) =
     Giraffe.Tasks.task {
         let! lunch = ctx.BindJson<LunchSpot>()
         LunchAccess.addLunch lunch
-        return! text (sprintf "Added %s to the great Austin lunch spots." lunch.Name) next ctx
+        return! text (sprintf "Added %s to the Austin lunch spots." lunch.Name) next ctx
     }
 
 let webApp =
